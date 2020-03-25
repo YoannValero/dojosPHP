@@ -25,10 +25,10 @@
     
     <?php 
         include nav;
-        include 'class/router.php';
+        include 'class/Router.php';
         
         $init = new Router(root, 'accueil.php');
-        var_dump($_GET["category"]);
+        
         ?>
        <?php include footer;?>
 

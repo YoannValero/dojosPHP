@@ -56,7 +56,7 @@ class Auth
 
 
         $user_id = $db->lastInsertId(); // Dernier ID entré en BDD
-        mail($email, 'Confirmation de votre compte', "Afin de valider votre compte merc de cliquer sur ce lien\n\nhttp://localhost/dojos_blog_PHP/index.php?page=confirm?id=$user_id&token=$token");
+        mail($email, 'Confirmation de votre compte', "Afin de valider votre compte merc de cliquer sur ce lien\n\nhttp://localhost/dojos_blog_PHP/index.php?page=confirm&id=$user_id&token=$token");
     }
     /** 
      * Permet de confirmer un compte pour la première connexion
@@ -171,7 +171,7 @@ class Auth
 
             $db->query("UPDATE users SET reset_token = ?, reset_at = NOW() WHERE id_user = ?", [$reset_token, $user->id]);
 
-            mail($email, 'Réinitialisation de votre mot de passe', "Afin de réinitiatilisé votre mot de passe merci de cliquer sur ce lien\n\nhttp://localhost/dojos_blog_PHP/index.php?page=reset?id={$user->id}&token=$reset_token");
+            mail($email, 'Réinitialisation de votre mot de passe', "Afin de réinitiatilisé votre mot de passe merci de cliquer sur ce lien\n\nhttp://localhost/dojos_blog_PHP/index.php?page=reset&id={$user->id}&token=$reset_token");
             return $user;
         }
         return false;

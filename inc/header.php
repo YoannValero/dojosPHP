@@ -8,21 +8,33 @@
                     <span class="icon-bar">fsdf</span>
                     <span class="icon-bar">fsdf</span>
                 </button>
-                <a class="navbar-brand" href="index.php?page=accueil">Accueil</a>
+                <a class="navbar-brand" href="index.php?page=accueil">Blog</a>
             </div>
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <?php $user = App::getAuth()->user();
                     if ($user) : ?>
-                        <li><a href="index.php?page=logout">Se déconnecter</a></li>               
-                    <?php else : ?>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Catégorie
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="index.php?page=categorie&category=bonheur">Bonheur</a>
-                                <a class="dropdown-item" href="index.php?">Tristesse</a>
+                                <a class="dropdown-item" href="index.php?page=categorie&category=Bonheur">Bonheur</a><br>
+                                <a class="dropdown-item" href="index.php?page=categorie&category=Tristesse">Tristesse</a><br>
+                                <a class="dropdown-item" href="index.php?page=categorie&category=Confiance">Confiance</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Autres</a>
+                            </div>
+                        </li>
+                        <li><a href="index.php?page=logout">Se déconnecter</a></li>               
+                    <?php else : ?>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Catégorie
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="index.php?page=categorie&category=bonheur">Bonheur</a><br>
+                                <a class="dropdown-item" href="index.php?page=categorie&category=Tristesse">Tristesse</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#">Autres</a>
                             </div>

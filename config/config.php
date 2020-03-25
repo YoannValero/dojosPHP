@@ -6,10 +6,6 @@ define("title", "Dojos BlogPHP");
 define("nav", "inc/header.php");
 define("footer", "inc/footer.php");
  
-//Images, CSS
-define("cheminImages", "assets/img"); 
-define("cheminCss", "./assets/css/style.css"); 
-
 // Rooter
 define('root', ['accueil' => 'accueil.php',
                 'login' => 'login.php',
