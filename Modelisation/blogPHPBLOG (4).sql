@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le :  mer. 25 mars 2020 à 14:25
+-- Généré le :  mer. 25 mars 2020 à 17:04
 -- Version du serveur :  5.7.29-0ubuntu0.18.04.1
 -- Version de PHP :  7.4.4
 
@@ -90,7 +90,11 @@ CREATE TABLE `commentaires` (
 --
 
 INSERT INTO `commentaires` (`id_commentaire`, `titre`, `content`, `created_at`, `id_article`, `id_user`) VALUES
-(1, 'Mon commentaire sur moi', 'lalala lalala lalala lalala ', '2020-03-17 14:00:00', 1, 1);
+(1, 'Mon commentaire sur moi', 'lalala lalala lalala lalala ', '2020-03-17 14:00:00', 1, 1),
+(2, 'N\'importe quoi ', 'mais c\'est quoi ce cirque', '2020-03-16 12:00:00', 2, 1),
+(3, 'Arrête ton cinéma', 'Monsieur le violoniste en action', '2020-03-18 13:00:00', 3, 2),
+(4, 'Awesome', 'Amaziiiiiiiiing', '2020-03-21 00:00:00', 4, 2),
+(5, 'Mouaaiiis', 'Ceci est baclé, lala', '2020-03-22 13:00:00', 1, 2);
 
 -- --------------------------------------------------------
 
@@ -194,7 +198,7 @@ ALTER TABLE `categorie`
 -- AUTO_INCREMENT pour la table `commentaires`
 --
 ALTER TABLE `commentaires`
-  MODIFY `id_commentaire` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_commentaire` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT pour la table `users`
