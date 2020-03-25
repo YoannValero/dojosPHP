@@ -7,6 +7,7 @@ class Database
 
     public function __construct($login, $password, $database_name,  $host = 'localhost')
     {
+        setlocale(LC_TIME, "fr_FR");
         $this->pdo = new PDO("mysql:host=$host;dbname=$database_name;charset=utf8", $login, $password);
         $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $this->pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);

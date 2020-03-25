@@ -5,7 +5,7 @@
 
 <div class='container'>
     <h1> <?= $art['articlesById']['nom'] ?> </h1>
-    <small> <?= $art['articlesById']['created_at'] ." par  ". $art['articlesById']['username']   ?></small>
+    <small> Ajouté le <?= $art['articlesById']['date'] ." par  ". $art['articlesById']['username']   ?></small>
     <hr>
     <p> <?= $art['articlesById']['content'] ?> </p>
 </div>
@@ -17,7 +17,7 @@
             <?php for ($i = 0; $i < count($art['commentaires']); $i++): ?>
                 <h3> <?= $art['commentaires'][$i]['titre'] ?> </h3>
                 <p> <?= $art['commentaires'][$i]['content'] ?> </p>
-                <p> Ecrit par : <?= $art['commentaires'][$i]['username']. " le ". $art['commentaires'][$i]['created_at'] ?> <p>
+                <p> Ecrit par : <?= $art['commentaires'][$i]['username']. " le ". $art['commentaires'][$i]['date_com'] ?> <p>
                 <hr>
             <?php endfor;?>
         </div>

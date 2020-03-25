@@ -6,15 +6,15 @@ class Article {
 
     public function __construct() {
         $this->db = App::getDatabase();
-        
     }
     
     public function findAll() {
         
         $result = $this->db->pdo->query(
-            "SELECT * FROM articles
+            "SELECT *, DATE_FORMAT(articles.created_at,'%d %M %Y à %H:%i') AS date FROM articles
             INNER JOIN users
-            ON articles.id_user = users.id_user"
+            ON articles.id_user = users.id_user
+            ORDER BY created_at DESC"
         );
         
         $articles = $result->fetchAll(PDO::FETCH_ASSOC);
@@ -27,12 +27,13 @@ class Article {
     $categorie = $_GET['category'];
         
     $result = $this->db->pdo->prepare(
-        "SELECT * FROM articles 
+        "SELECT *, DATE_FORMAT(articles.created_at,'%d %M %Y à %H:%i') AS date FROM articles 
         INNER JOIN categorie 
         ON categorie.id_categorie = articles.id_categorie 
         INNER JOIN users
         ON articles.id_user = users.id_user
-        WHERE categorie.nom_categorie = :nom");
+        WHERE categorie.nom_categorie = :nom
+        ORDER BY created_at DESC");
     $result->execute([':nom' => $categorie]);
    
     $articlesByCategorie = $result->fetchAll(PDO::FETCH_ASSOC);
@@ -42,10 +43,11 @@ class Article {
 
     public function findByUser($user) {
         $result = $this->db->pdo->prepare(
-            "SELECT * FROM articles
+            "SELECT *, DATE_FORMAT(articles.created_at,'%d %M %Y à %H:%i') AS date FROM articles
             INNER JOIN users
             ON articles.id_user = users.id_user
-            WHERE users.username = :nom"
+            WHERE users.username = :nom
+            ORDER BY created_at DESC"
         );
         $result->execute([':nom' => $user]);
         $articlesByUser = $result->fetchAll(PDO::FETCH_ASSOC);
@@ -60,10 +62,11 @@ class Article {
         $commentaires = $comment->findCommentsByArticle($id);
 
         $result = $this->db->pdo->prepare(
-            "SELECT * FROM articles
+            "SELECT *, DATE_FORMAT(articles.created_at,'%d %M %Y à %H:%i') AS date FROM articles
             INNER JOIN users
             ON articles.id_user = users.id_user
-            WHERE articles.id_article = :nom"
+            WHERE articles.id_article = :nom
+            ORDER BY created_at DESC"
         );
         $result->execute([':nom' => $id]);
         $articlesById = $result->fetch(PDO::FETCH_ASSOC);

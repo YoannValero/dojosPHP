@@ -10,7 +10,7 @@ class Comment {
 
     public function findCommentsByArticle($article_id) {
         $result = $this->db->pdo->prepare(
-            "SELECT * FROM commentaires 
+            "SELECT *, DATE_FORMAT(commentaires.created_at,'%d %M %Y à %H:%i') AS date_com FROM commentaires 
             INNER JOIN users
             ON commentaires.id_user = users.id_user
             WHERE id_article = :id_article 
