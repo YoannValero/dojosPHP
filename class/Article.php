@@ -19,7 +19,7 @@ class Article {
 
     public function findByCategorie($categorie) {
 
-    $result = $this->pdo->query("SELECT * FROM viewBlog WHERE nom_categorie = `bonheur`" );
+    $result = $this->pdo->query("SELECT * FROM articles INNER JOIN categorie ON categorie.id_categorie = articles.id_categorie WHERE nom_categorie = 'bonheur'");
     $result->execute();
     $articlesByCategorie = $result->fetchAll(PDO::FETCH_ASSOC);
 
