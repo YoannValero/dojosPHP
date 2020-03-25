@@ -49,7 +49,6 @@ if (!empty($_POST)) {
     $result = $articleByUser->findByUser($_SESSION['auth']->username);
 
     // var_dump($result);
-
     foreach ( $result as $article ) : ?>
         <a href="index.php?page=showArticle&id=<?= $article['id_article'] ?>" class='btn btn-info'> <?= $article['nom']; ?> </a> <br>
     <?php endforeach; ?>

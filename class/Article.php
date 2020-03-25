@@ -2,7 +2,7 @@
 
 class Article {
 
-    private $db;
+    public $db;
 
     public function __construct() {
         $this->db = App::getDatabase();
@@ -54,6 +54,11 @@ class Article {
     }
 
     public function findOneArticle($id) {
+
+        $comment = new Comment;
+
+        $commentaires = $comment->findCommentsByArticle($id);
+
         $result = $this->db->pdo->prepare(
             "SELECT * FROM articles
             INNER JOIN users
@@ -63,7 +68,7 @@ class Article {
         $result->execute([':nom' => $id]);
         $articlesById = $result->fetch(PDO::FETCH_ASSOC);
 
-        return $articlesById;
+        return compact('articlesById','commentaires');
 
     }
 }
