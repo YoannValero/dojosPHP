@@ -24,17 +24,10 @@ if (!empty($_POST)) {
 
 
 <h1> <?php echo "Bonjour " . ucfirst($_SESSION['auth']->username); ?> </h1>
-<pre>
-    il 
-    se 
-    passe
-    beaucoup 
-    de chose 
-    quand on est connecté
-</pre>
+<hr>
 <h2> Mon compte </h2>
 
-<h3> Gestion de mon mot de passe : </h3>
+<h3> Mes informations : </h3>
 
 <form action="" method="POST">
 
@@ -47,5 +40,18 @@ if (!empty($_POST)) {
    
     <button class="btn btn-primary">Changer de mdp</button>
 </form>
+
+<h3> Mes articles : </h3>
+
+<?php 
+    // var_dump($_SESSION['auth']->username);
+    $articleByUser = new Article;
+    $result = $articleByUser->findByUser($_SESSION['auth']->username);
+
+    // var_dump($result);
+
+    foreach ( $result as $article ) : ?>
+        <a href="index.php?page=showArticle&id=<?= $article['id_article'] ?>" class='btn btn-info'> <?= $article['nom']; ?> </a> <br>
+    <?php endforeach; ?>
 
 

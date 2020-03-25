@@ -15,6 +15,7 @@ define('root', ['accueil' => 'accueil.php',
                 'reset' => 'reset.php',
                 'confirm' => 'confirm.php',
                 'logout' => 'logout.php',
-                'categorie' => 'categorie.php'
+                'categorie' => 'categorie.php',
+                'showArticle' => 'showArticle.php'
                 ])
 ?>

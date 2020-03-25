@@ -39,4 +39,31 @@ class Article {
 
     return $articlesByCategorie;
     }
+
+    public function findByUser($user) {
+        $result = $this->db->pdo->prepare(
+            "SELECT * FROM articles
+            INNER JOIN users
+            ON articles.id_user = users.id_user
+            WHERE users.username = :nom"
+        );
+        $result->execute([':nom' => $user]);
+        $articlesByUser = $result->fetchAll(PDO::FETCH_ASSOC);
+
+        return $articlesByUser;
+    }
+
+    public function findOneArticle($id) {
+        $result = $this->db->pdo->prepare(
+            "SELECT * FROM articles
+            INNER JOIN users
+            ON articles.id_user = users.id_user
+            WHERE articles.id_article = :nom"
+        );
+        $result->execute([':nom' => $id]);
+        $articlesById = $result->fetch(PDO::FETCH_ASSOC);
+
+        return $articlesById;
+
+    }
 }
